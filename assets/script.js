@@ -18,9 +18,8 @@ var questions = [
         problem: "This is quetion 3",
         answerSelection: ['i answer', 'j answer', 'k answer', 'l answer'],
         answer: 'b answer'
-    },
-
-]
+    }
+];
 
 
 //define variables for div spots via getElementById
@@ -68,22 +67,22 @@ function displayQuestion() {
             showQuestion.innerHTML = "";
             
 
-            if(selection.innerText === questions[questionNum].answer) {
+            if(selection.innerText === questions[questionNum].answer && timeLeft > 0) {
                 questionNum ++;
+                timeLeft+= 2 
                 displayQuestion();
                 return
-            }else{
+            } else if ( selection.innerText !== questions[questionNum.answer && timeLeft > 0]) {
                 questionNum ++;
+                timeLeft -= 2
                 displayQuestion();
                 return
-            }
-            
+            } else {
+                console.log( 'game over')
+            }           
         })
         selection.append()
     };
-
-
-    
 };
 
 
