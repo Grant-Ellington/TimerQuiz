@@ -3,21 +3,21 @@
 var questions = [
 
     {
-        problem: ["This is quetion 1?"],
+        problem: "This is quetion 1?",
         answerSelection: ['a answer', 'b answer', 'c answer', 'd answer'],
         answer: 'a answer'
     },
 
     {
-        problem: "This is quetion 1?",
-        answerSelection: ['a answer', 'b answer', 'c answer', 'd answer'],
-        answer: 'a answer'
+        problem: "This is quetion 2?",
+        answerSelection: ['e answer', 'f answer', 'g answer', 'h answer'],
+        answer: 'b answer'
     },
     
     {
-        problem: "This is quetion 1?",
-        answerSelection: ['a answer', 'b answer', 'c answer', 'd answer'],
-        answer: 'a answer'
+        problem: "This is quetion 3",
+        answerSelection: ['i answer', 'j answer', 'k answer', 'l answer'],
+        answer: 'b answer'
     },
 
 ]
@@ -53,21 +53,37 @@ function startTimer () {
 };
 
 function displayQuestion() {
-    showQuestion.innerHTML = questions[questionNum].problem[0]//This is the order to target questions
-
+    showQuestion.innerHTML = questions[questionNum].problem//This is the order to target questions
+    choices.innerText = " "
+    
     //Create for loop to go through questions
-for ( i =0; i<=questions.length; i++) {
-    choices = document.creteElement('button')
-    choices.innerText = questions[questionNum].answerSelection[i]
-    selection.addEventListner('click', function (event) {
-        event.stopPropagation
+    for ( i =0; i<questions[questionNum].answerSelection.length; i++) {
+        let selection = document.createElement("button")
+        selection.setAttribute('data-id', i)
+        selection.innerText = questions[questionNum].answerSelection[i]
+        choices.appendChild(selection)
+        selection.addEventListener('click', function(event) {
+            event.stopPropagation();
 
-    if(selection.innerText === questions[questionNum].answer){
-        questionNum++;
-    }else {
-        console.log('WRONG ANSWER')
-    }
-    })};
+            showQuestion.innerHTML = "";
+            
+
+            if(selection.innerText === questions[questionNum].answer) {
+                questionNum ++;
+                displayQuestion();
+                return
+            }else{
+                questionNum ++;
+                displayQuestion();
+                return
+            }
+            
+        })
+        selection.append()
+    };
+
+
+    
 };
 
 
